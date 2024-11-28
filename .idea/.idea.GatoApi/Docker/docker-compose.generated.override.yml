@@ -1,0 +1,37 @@
+# This is a generated file. Not intended for manual editing.
+services:
+  gatoapi:
+    build:
+      context: "C:\\Projetos\\.NET\\GatoApi"
+      dockerfile: "Api/Dockerfile"
+      target: "base"
+      args:
+        BUILD_CONFIGURATION: "Debug"
+    command: []
+    entrypoint:
+    - "/opt/rider-debugger/linux-x64/JetBrains.Debugger.Worker"
+    - "--runtimeconfig"
+    - "/opt/rider-debugger/JetBrains.Debugger.Worker.runtimeconfig.json"
+    - "--mode=server"
+    - "--frontend-port=57100"
+    - "--backend-port=57300"
+    - "--timeout=60"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+      RIDER_DEBUGGER_LOG_DIR: "/var/opt/rider-debugger"
+      RESHARPER_LOG_CONF: "/etc/opt/rider-debugger/backend-log.xml"
+    image: "gatoapi:dev"
+    ports:
+    - "127.0.0.1:57011:57100"
+    - "127.0.0.1:57211:57300"
+    volumes:
+    - "C:\\Users\\Nilton\\.nuget\\packages:/home/app/.nuget/packages"
+    - "C:\\Projetos\\.NET\\GatoApi\\Api:/app:rw"
+    - "C:\\Projetos\\.NET\\GatoApi:/src:rw"
+    - "C:\\Users\\Nilton\\AppData\\Local\\JetBrains\\RiderRemoteDebugger\\2024.1.2\\\
+      Linux64:/opt/rider-debugger"
+    - "C:\\Program Files\\JetBrains\\JetBrains Rider 2024.1.2\\bin:/etc/opt/rider-debugger/backend-log.xml"
+    - "C:\\Users\\Nilton\\AppData\\Local\\JetBrains\\Rider2024.1\\log\\DebuggerWorker\\\
+      JetBrains.Debugger.Worker.2024_11_17_22_18_05:/var/opt/rider-debugger:rw"
+    working_dir: "/app"
