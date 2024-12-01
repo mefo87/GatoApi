@@ -1,11 +1,19 @@
-﻿namespace Data.Gatos;
+﻿using System.Text.Json.Serialization;
+using Data.Donos;
+using Data.Gatos.GatoFotos;
 
-public sealed class Gato
+namespace Data.Gatos;
+
+public class Gato
 {
     public Guid Id { get; init; } = Guid.NewGuid();
-    public string Nome { get; set; }
-    public ECatType Tipo { get; set; }
-
+    public Guid IdDono { get; private set; }
+    public string Nome { get; private set; }
+    public ECatType Tipo { get; private set; }
+    
+    [JsonIgnore]
+    public virtual Dono Dono { get; private set; }
+    
     public Gato(string nome, ECatType tipo)
     {
         Nome = nome;
