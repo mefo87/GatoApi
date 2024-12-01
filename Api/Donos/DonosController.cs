@@ -45,6 +45,11 @@ public class DonosController(IDonoService donoService) : ControllerBase
         return Ok(donoDto.Dono);
     }
 
+    /// <summary>
+    /// Deleta dono da base
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteDonoByIdAsync([FromRoute] Guid id)
     {
