@@ -21,7 +21,7 @@ public class DonoService(IDonoRepository donoRepository) : IDonoService
         return new DonoResultDto(HttpStatusCode.OK, dono);
     }
     
-    public async Task<Guid> CriarDonoAsync (string nome, string email, string telefone, string cpf)
+    public async Task<Guid> CriarDonoAsync(string nome, string email, string telefone, string cpf)
     {
         var dono = new Dono(nome, cpf, email, telefone);
         await donoRepository.CriarDonoAsync(dono);

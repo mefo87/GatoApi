@@ -22,7 +22,8 @@ public class GatosController(IGatoService gatoService) : ControllerBase
             {
                 Id = x.Id,
                 Nome = x.Nome,
-                Tipo = x.Tipo
+                Tipo = x.Tipo,
+                IdDono = x.IdDono
             }).ToList();
         return Ok(gatoViewModelList);
     }
@@ -35,7 +36,7 @@ public class GatosController(IGatoService gatoService) : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Guid))]
     public async Task<IActionResult> AddGatosAsync([FromBody] CriarGatoViewModel viewModel)
     {
-        var gatoID = await gatoService.CriarGatoAsync(viewModel.Nome, viewModel.Tipo);
+        var gatoID = await gatoService.CriarGatoAsync(viewModel.Nome, viewModel.Tipo, viewModel.IdDono);
         return Ok(gatoID);
     }
 
@@ -84,7 +85,8 @@ public class GatosController(IGatoService gatoService) : ControllerBase
             {
                 Id = x.Id,
                 Nome = x.Nome,
-                Tipo = x.Tipo
+                Tipo = x.Tipo,
+                IdDono = x.IdDono
             }).ToList();
         return Ok(gatoViewModelList);
     }

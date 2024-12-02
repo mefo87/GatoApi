@@ -10,9 +10,9 @@ public class GatoService(IGatoRepository gatoRepository) : IGatoService
         return await gatoRepository.GetAllGatosAsync();
     }
 
-    public async Task<Guid> CriarGatoAsync(string nome, ECatType tipo)
+    public async Task<Guid> CriarGatoAsync(string nome, ECatType tipo, Guid idDono)
     {
-        var gato = new Gato(nome, tipo);
+        var gato = new Gato(nome, tipo, idDono);
         await gatoRepository.CriarGatoAsync(gato);
         return gato.Id;
     }

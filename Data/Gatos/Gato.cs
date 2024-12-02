@@ -14,10 +14,11 @@ public class Gato
     [JsonIgnore]
     public virtual Dono Dono { get; private set; }
     
-    public Gato(string nome, ECatType tipo)
+    public Gato(string nome, ECatType tipo, Guid idDono)
     {
         Nome = nome;
         Tipo = tipo;
+        IdDono = idDono;
     }
 
     public void AtualizarGato(string nome, ECatType tipo)
