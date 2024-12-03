@@ -22,11 +22,6 @@ public sealed class Dono
         Email = email;
         Telefone = telefone;
     }
-
-    public Dono()
-    {
-        
-    }
 }
 
 // Id - Guid

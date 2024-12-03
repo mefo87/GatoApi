@@ -10,7 +10,11 @@ namespace GatoApi.Donos;
 [Route("/api/donos")]
 public class DonosController(IDonoService donoService) : ControllerBase
 {
+    /// <summary>
+    /// Recupera uma lista com todos os donos.
+    /// </summary>
     [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<DonoViewModel>))]
     public async Task<IActionResult> GetAllDonosAsync()
     {
         var donoList = await donoService.GetAllDonosAsync();
@@ -25,8 +29,13 @@ public class DonosController(IDonoService donoService) : ControllerBase
             }).ToList();
         return Ok(donoViewModelList);
     }
-
+/// <summary>
+/// Cria um novo dono.
+/// </summary>
+/// <param name="ViewModel"></view model com os dados do novo dono.>
+/// <returns></returns>
     [HttpPost]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Guid))]
     public async Task<IActionResult> CriarDonoAsync([FromBody] DonoViewModel ViewModel)
     {
         var novoDono =
@@ -35,6 +44,7 @@ public class DonosController(IDonoService donoService) : ControllerBase
     }
 
     [HttpGet("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<DonoViewModel>))]
     public async Task<IActionResult> GetDonoByIdAsync([FromRoute]Guid Id)
     {
         var donoDto  = await donoService.GetDonoByIdAsync(Id);
@@ -48,7 +58,7 @@ public class DonosController(IDonoService donoService) : ControllerBase
     /// <summary>
     /// Deleta dono da base
     /// </summary>
-    /// <param name="id"></param>
+    /// <param name="id"></id do dono.>
     /// <returns></returns>
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteDonoByIdAsync([FromRoute] Guid id)
@@ -60,7 +70,12 @@ public class DonosController(IDonoService donoService) : ControllerBase
 
         return Ok();
     }
-
+/// <summary>
+/// atualiza os dados do dono.
+/// </summary>
+/// <param name="id"></id do dono.>
+/// <param name="viewModel"></view model com os dados do dono.>
+/// <returns></returns>
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateDonoByIdAsync([FromRoute] Guid id, [FromBody] UpdateDonoViewModel viewModel)
     {
