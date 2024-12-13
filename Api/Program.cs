@@ -1,4 +1,7 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using GatoApi.Configuration;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +18,8 @@ services.AddDatabase(builder.Configuration);
 
 services.AddControllers();
 services.AddMvc();
+services.AddFluentValidationAutoValidation();
+services.AddValidatorsFromAssemblyContaining<Program>();
     
 var app = builder.Build();
 app.UseRouting();
