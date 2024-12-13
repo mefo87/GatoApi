@@ -10,6 +10,7 @@ namespace GatoApi.Gatos;
 public class GatosController(IGatoService gatoService) : ControllerBase
 {
     /// <summary>
+    /// <summary>
     /// Recupera uma lista com todos os gatos.
     /// </summary>
     [HttpGet]

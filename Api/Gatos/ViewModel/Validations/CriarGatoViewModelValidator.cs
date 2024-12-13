@@ -15,6 +15,5 @@ public class CriarGatoViewModelValidator : AbstractValidator<CriarGatoViewModel>
         RuleFor(x => x.Nome)
             .NotEmpty()
             .WithMessage("Nome de gato é obrigatório!");
-
     }
 }
